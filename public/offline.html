@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HabitForge - Offline</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4F46E5">
+  <style>
+    /* Simple CSS reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      color: #1f2937;
+      background: linear-gradient(to bottom right, #ffffff, #f1f5f9);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body {
+        color: #f9fafb;
+        background: linear-gradient(to bottom right, #111827, #000000);
+      }
+    }
+    
+    .container {
+      max-width: 28rem;
+      width: 100%;
+      background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .container {
+        background-color: #1f2937;
+      }
+    }
+    
+    .icon {
+      width: 4rem;
+      height: 4rem;
+      background-color: #fef3c7;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .icon {
+        background-color: #78350f;
+      }
+    }
+    
+    .icon svg {
+      width: 2rem;
+      height: 2rem;
+      color: #d97706;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .icon svg {
+        color: #fbbf24;
+      }
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      p {
+        color: #9ca3af;
+      }
+    }
+    
+    .info-box {
+      background-color: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .info-box {
+        background-color: #374151;
+      }
+    }
+    
+    .info-box h2 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .info-box p {
+      font-size: 0.875rem;
+    }
+    
+    button {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.625rem 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 150ms;
+    }
+    
+    button:hover {
+      background-color: #4338ca;
+    }
+    
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .footer {
+        color: #6b7280;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728m-3.536-3.536a5 5 0 010-7.072m-2.121 2.122a1.5 1.5 0 10-2.121-2.121m-2.122 2.121a3 3 0 010-4.243m4.243 0a3 3 0 010 4.243m0 0a3 3 0 01-4.243 0"></path>
+      </svg>
+    </div>
+    
+    <h1>You're Offline</h1>
+    
+    <p>
+      This page hasn't been cached for offline use yet.
+    </p>
+    
+    <div class="info-box">
+      <h2>What's happening?</h2>
+      <p>
+        HabitForge is a Progressive Web App (PWA) designed to work offline, but this specific page hasn't been visited before while you were online. Try visiting the home page or check your internet connection.
+      </p>
+    </div>
+    
+    <button onclick="window.location.href='/'">
+      Go to Home
+    </button>
+  </div>
+  
+  <p class="footer">
+    Once reconnected, HabitForge will work offline!
+  </p>
+  
+  <script>
+    // Check connection status periodically
+    function checkConnection() {
+      if (navigator.onLine) {
+        // If we're back online, reload the page
+        window.location.reload();
+      }
+    }
+    
+    // Check connection every 3 seconds
+    setInterval(checkConnection, 3000);
+    
+    // Also check when the online event fires
+    window.addEventListener('online', function() {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>
